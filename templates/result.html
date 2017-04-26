@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load app_filters %}
+
+{% block content %}
+	<div class="row">
+		<div class="col col-sm-2"></div>
+		<div class="col col-sm-8">
+
+			{% if result %}
+				<h3>Total voted casted: {{vote_casted}}</h3>
+				<hr />
+				<div class="table-responsive">          
+				  <table class="table">
+				    <thead>
+				      <tr>
+				        <th>Candidate</th>
+				        <th>Candidate Username</th>
+				        <th>Position</th>
+				        <th>Vote</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{% for vote in result %}
+							<tr>
+								<td>{{ members|get_name:vote.vote }}</td>
+								<td>{{ vote.vote }}</td>
+								<td>{{ vote.position }}</td>
+								<td>{{ vote.vote_count }}</td>
+							</tr>
+						{% endfor %}
+				    </tbody>
+				  </table>
+			{% else %}
+				Result will shown as soon as votes are casted.
+			{% endif%}
+		<div>
+		<div class="col col-sm-2"></div>
+	</div>
+{% endblock %}

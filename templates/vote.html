@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xl-12">
+			Hello, <b>{{username}}</b> - <a href="/logout/">Logout</a>
+			<hr />
+			<h3 ><b>Note:</b> <span style="color: red;">Click on candidate to vote.</span></h3>
+			<hr />
+		</div>
+
+		{% if voted %}
+		
+			<div class="col-xl-12">
+				<h3>Your vote is already recorded, Thank you!</h3>
+			</div>
+		{% else %}
+			<div class="col-xl-12">
+				<form action="" method="post" id="vote">
+					{% csrf_token %}
+				  
+					{% for e in elected %}
+						
+						{% for position, candidates in e.items %}
+
+							<h2>{{ position }}</h2>
+							<div class="candidates">
+							{% for candidate in candidates %}
+								<div class="candidate">	
+									<img src="{{ candidate.url }}">
+									<br />
+									<input class="hidden" type="radio" name="{{ position }}" value="{{candidate.id}}"> 
+									<p>{{ candidate.name }}</p>
+								</div>
+							{% endfor %}
+							<hr />
+							</div>
+
+						{% endfor %}
+						
+					{% endfor %}
+
+				  	{% buttons %}
+				    	<button type="submit" disabled="disabled" class="btn btn-primary">
+				      		Cast Vote
+				    	</button>
+				  	{% endbuttons %}
+				</form>
+			</div>		
+		{% endif %}
+	</div>
+{% endblock %}

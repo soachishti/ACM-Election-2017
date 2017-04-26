@@ -1,0 +1,36 @@
+{% load bootstrap3 %}
+
+<html>
+<head>
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery=1%}
+	<link href="/static/css/style.css" rel="stylesheet">
+	<script src="/static/js/script.js"></script>
+</head>
+<body>	
+	<span id="credit">Developed by <a href="http://github.com/soachishti">@soachishti</a></span>
+	<br /><br /><br /><br />
+	<div class="container">
+		<div class="row">
+			<div class="col col-sm-4"></div>
+			<div class="col col-sm-2" style="vertical-align: center; ">
+				<a href="/"><img src="/static/acm.jpg"></a>
+			</div>
+			<div class="col col-sm-2" style="vertical-align: center; ">
+				<a href="/"><img src="/static/fast.png"></a>
+			</div>
+			<div class="col col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col col-sm-4"></div>
+			<div class="col col-sm-4">
+				<hr />
+				<h1><a href="/">Election ACM'17</a></h1>
+				<hr />
+			</div>
+			<div class="col col-sm-4"></div>
+		</div>
+	    {% block content %}{% endblock %}
+	</div>
+</body>
+</html>
