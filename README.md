@@ -9,9 +9,10 @@
 5. python manage.py migrate
 6. python manage.py runserver
 7. Check members and elected variable for modifying candidate information.
-8. Visit 127.0.0.1:8000/Visit 127.0.0.1:8000/init - To generate username (Check election/views.py for details)
-9. Now login using credential given in misc/Password.txt to login and cast vote.
-10. To view result visit /result/
+8. Visit 127.0.0.1:8000/
+9. Visit 127.0.0.1:8000/init - To generate username (Check election/views.py for details)
+10. Now login using credential given in misc/Password.txt to login and cast vote.
+11. To view result visit /result/
 
 ## Detail
 
