@@ -89,8 +89,14 @@ def thank(request):
 
 def result(request):
     vote_casted = Vote.objects.values('position').order_by().annotate(position_count=Count('position')).distinct()
+    casted_vote = 0
+    try:
+    	casted_vote = vote_casted[0]['position_count'] 
+    except Exception:
+    	casted_vote = 0
+
     result = Vote.objects.values('vote', 'position').order_by().annotate(vote_count=Count('vote'),position_count=Count('position')).order_by('-vote_count')
-    return render(request, 'result.html', {'result': result, 'members': members, 'vote_casted': vote_casted[0]['position_count']})
+    return render(request, 'result.html', {'result': result, 'members': members, 'vote_casted': casted_vote})
 
 @login_required
 def vote(request):
